@@ -1,0 +1,23 @@
+.option-select {
+    display: flex;
+    border-bottom: 2px solid #424242;
+    max-width: max-content;
+}
+
+.option-select .option {
+    color: #ffffff;
+    font-size: 16px;
+    /* margin-bottom: 19px; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 22px 0;
+}
+
+.option-select .option:not(:last-of-type){
+    margin-right: 30px;
+}
+
+.option-select .option.active {
+    border-bottom: 2px solid #f65261;
+}
