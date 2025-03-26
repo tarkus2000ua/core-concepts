@@ -1,5 +1,5 @@
 import React from 'react';
-import { Counter } from '../../src/components/counter/Counter'; // Adjust the import to your file structure
+import { Counter } from '../../src/components/counter/Counter';
 
 /// <reference types="cypress" />
 
