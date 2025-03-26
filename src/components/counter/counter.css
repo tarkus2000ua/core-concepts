@@ -1,0 +1,32 @@
+.counter{
+    width: 100px;
+    margin: auto;
+}
+
+.counter .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.count {
+    padding: 5px;
+    width: 50px;
+    margin: auto;
+    margin-bottom: 5px;
+    background-color: black;
+    color: lime;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+.counter .buttons .button {
+    font-size: 20px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    background-color: #f65261;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}

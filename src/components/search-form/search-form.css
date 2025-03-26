@@ -1,0 +1,30 @@
+.search-form input {
+  height: 57px;
+  width: 713px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-right: 14px;
+  border: none;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  background: #323232cc;
+  padding: 17px 19px;
+  color: #FFFFFF;
+
+}
+
+.search-form button {
+  font-size: 20px;
+  text-transform: uppercase;
+  height: 57px;
+  width: 233px;
+  border-radius: 4px;
+  background-color: #f65261;
+  font-weight: 500;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
