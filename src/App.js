@@ -1,5 +1,6 @@
 import './App.css';
 import { Counter } from './components/counter/counter';
+import MovieDetails from './components/movie-details/movie-details';
 import MovieTile from './components/movie-tile/movie-tile';
 import OptionSelect from './components/option-select/option-select';
 import SearchForm from './components/search-form/search-form';
@@ -21,9 +22,15 @@ function App() {
       <div className='center'>
         <OptionSelect options={GENRES} onSelect={onSelect} />
       </div>
+      <hr />
       <h2>Movie Tile</h2>
       <div className='center'>
         <MovieTile movie={MOVIE} onTileClick={onTileClick} />
+      </div>
+      <hr />
+      <h2>Movie Details</h2>
+      <div className='center'>
+        <MovieDetails movie={MOVIE} />
       </div>
     </div>
   );
