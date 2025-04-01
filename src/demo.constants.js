@@ -21,6 +21,17 @@ export const GENRES = [
   },
 ];
 
+export const SORT_OPTIONS = [
+    {
+      id: 1,
+      value: 'REALEASE DATE',
+    },
+    {
+      id: 2,
+      value: 'TITLE',
+    },
+  ];
+
 export const MOVIE = {
   id: 30,
   title: 'Pulp Fiction',
