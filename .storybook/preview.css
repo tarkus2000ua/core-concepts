@@ -1,0 +1,6 @@
+/* Applies to ALL Storybook content */
+#storybook-root,
+#storybook-docs,
+.sb-show-main {
+  font-family: 'Montserrat', sans-serif !important;
+}

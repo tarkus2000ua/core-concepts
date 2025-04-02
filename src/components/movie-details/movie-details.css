@@ -1,0 +1,83 @@
+.movie-details {
+  display: flex;
+  color: #ffffff;
+}
+
+.movie-details .movie-info {
+    width: 700px;
+}
+
+.movie-details .poster {
+  width: 322px;
+  height: 455px;
+  margin-right: 60px;
+}
+
+.movie-details .title-container {
+  display: flex;
+  align-items: center;
+}
+
+.movie-details .movie-title {
+  font-weight: 300;
+  font-size: 40px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.movie-details .rating {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-details .genres {
+  opacity: 0.5;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  max-width: 680px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.movie-details .year-runtime-container {
+  display: flex;
+  color: #f65261;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  margin-bottom: 30px;
+}
+
+.movie-details .movie-year {
+  margin-right: 50px;
+}
+
+.movie-details .description {
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  opacity: 0.5;
+  text-align: left;
+}
