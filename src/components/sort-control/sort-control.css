@@ -1,5 +1,5 @@
 .sort-control {
-  display: flex;
+  display: inline-flex;
   font-family: Montserrat;
   font-weight: 400;
   font-size: 16px;
@@ -8,6 +8,7 @@
   text-transform: uppercase;
   color: #ffffff;
   position: relative;
+  /* max-width: 300px; */
 }
 
 .sort-control label {
