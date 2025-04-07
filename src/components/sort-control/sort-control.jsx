@@ -29,6 +29,10 @@ const SortControl = ({ options = [], selection, onSelect }) => {
     }
   };
 
+  if (!options.length) {
+    return null;
+  }
+
   return (
     <div className="sort-control" ref={selectRef}>
       <label>SORT BY</label>

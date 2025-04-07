@@ -50,7 +50,7 @@ describe('MovieTile Component', () => {
     expect(screen.queryByText('Edit')).not.toBeInTheDocument();
     
     // Click menu handle to open menu
-    const menuHandle = screen.getByRole('button', { name: '' }); 
+    const menuHandle = screen.getByRole('button', { name: 'menu-button' }); 
     await userEvent.click(menuHandle);
     
     // Menu should now be visible with options
@@ -68,7 +68,7 @@ describe('MovieTile Component', () => {
     render(<MovieTile movie={mockMovie} onTileClick={mockOnTileClick} />);
     
     // Open the menu
-    await userEvent.click(screen.getByRole('button', { name: '' }));
+    await userEvent.click(screen.getByRole('button', { name: 'menu-button' }));
     
     // Click on a menu item
     await userEvent.click(screen.getByText('Edit'));

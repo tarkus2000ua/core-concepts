@@ -6,7 +6,7 @@ const MovieTile = ({ movie, onTileClick }) => {
 
   const handleMenuClick = (e) => {
     e.stopPropagation();
-    setIsMenuOpened(prev => !prev);
+    setIsMenuOpened((prev) => !prev);
   };
 
   const handleMenuAction = (action) => (e) => {
@@ -19,28 +19,18 @@ const MovieTile = ({ movie, onTileClick }) => {
     <div className="movie-tile" onClick={() => onTileClick(movie)}>
       <img className="poster" src={movie.posterUrl} />
       <button
+        title="menu-button"
         className="menu-handle"
         onClick={handleMenuClick}
-      ></button>
+      />
       {isMenuOpened && (
         <div className="menu">
-          <button
-            className="close-menu"
-            onClick={handleMenuClick}
-          >
+          <button title='close-menu-button' className="close-menu" onClick={handleMenuClick}>
             ×
           </button>
           <ul>
-            <li
-              onClick={handleMenuAction('Edit')}
-            >
-              Edit
-            </li>
-            <li
-              onClick={handleMenuAction('Delete')}
-            >
-              Delete
-            </li>
+            <li onClick={handleMenuAction('Edit')}>Edit</li>
+            <li onClick={handleMenuAction('Delete')}>Delete</li>
           </ul>
         </div>
       )}
