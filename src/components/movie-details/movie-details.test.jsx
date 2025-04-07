@@ -17,7 +17,7 @@ describe('MovieDetails Component', () => {
     render(<MovieDetails movie={mockMovie} />);
     
     // Check if all main elements are rendered
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getByAltText('poster')).toBeInTheDocument();
     expect(screen.getByText(mockMovie.title)).toBeInTheDocument();
     expect(screen.getByText(mockMovie.rating.toString())).toBeInTheDocument();
     expect(screen.getByText(mockMovie.genres.join(', '))).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('MovieDetails Component', () => {
   test('displays correct poster URL', () => {
     render(<MovieDetails movie={mockMovie} />);
     
-    const imgElement = screen.getByRole('img');
+    const imgElement = screen.getByAltText('poster');
     expect(imgElement).toHaveAttribute('src', mockMovie.posterUrl);
   });
 

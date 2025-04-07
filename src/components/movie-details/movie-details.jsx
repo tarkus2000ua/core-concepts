@@ -8,10 +8,10 @@ const MovieDetails = ({ movie }) => {
   };
 
   const { hours, minutes } = formatRuntime(movie.runtime);
-  
+
   return (
     <div className="movie-details">
-      <img className="poster" src={movie.posterUrl} />
+      <img className="poster" src={movie.posterUrl} alt='poster'/>
       <div className="movie-info">
         <div className="title-container">
           <h2 className="movie-title">{movie.title}</h2>
