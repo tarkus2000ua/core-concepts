@@ -1,0 +1,193 @@
+.modal {
+    background-color: #1c1c1c;
+    padding: 30px;
+    width: 600px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    color: white;
+  }
+  
+  .modal-form {
+    width: 856px;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .form-row > .form-group:first-child {
+    width: 525px;
+  }
+  
+  .form-row > .form-group:last-child {
+    width: 300px;
+  }
+  
+  label {
+    color: #f65261;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.89px;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+  }
+  
+  input,
+  textarea {
+    background-color: #323232;
+    opacity: 0.8;
+    color: white;
+    border: none;
+    padding: 0 18px;
+    border-radius: 4px;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0px;
+  }
+  
+  input {
+    height: 57px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+    padding-top: 18px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .reset-btn,
+  .submit-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #f65261;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .reset-btn {
+    background-color: transparent;
+    color: #f65261;
+  }
+  
+  .submit-btn {
+    background-color: #f65261;
+    color: white;
+  }
+  
+  /* Date Input Styling */
+  .date-input-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .date-input {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  .date-input.empty {
+    color: transparent;
+  }
+  
+  .date-input:not(.empty) {
+    color: #ffffff;
+  }
+  
+  .date-placeholder {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+    font-size: 20px;
+  }
+  
+  /* Hide placeholder when input has value or focus */
+  .date-input:not(.empty) + .date-placeholder,
+  .date-input.has-focus + .date-placeholder {
+    display: none;
+  }
+  
+  /* Webkit browsers (Chrome, Safari) */
+  .date-input::-webkit-datetime-edit {
+    color: inherit; /* Inherits from parent */
+  }
+  
+  .date-input:focus::-webkit-datetime-edit {
+    color: white;
+  }
+  
+  .date-input::-webkit-calendar-picker-indicator {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(320deg);
+    cursor: pointer;
+  }
+  
+  /* Firefox */
+  .date-input {
+    color-scheme: dark;
+  }
+  
+  .date-input::-moz-calendar-picker-indicator {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(320deg);
+  }
+  
+  /* Multiselect Dropdown (if needed) */
+  .multiselect-dropdown {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Error Styling (recommended addition) */
+  .error-message {
+    color: #f65261;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .error-input {
+    border: 1px solid #f65261 !important;
+  }
