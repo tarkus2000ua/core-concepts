@@ -8,7 +8,7 @@ const Dialog = ({ title, children, onClose }) => {
     
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        onClose?.();
+        onClose();
       }
     };
 
@@ -26,7 +26,7 @@ const Dialog = ({ title, children, onClose }) => {
       role="presentation"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
-          onClose?.();
+          onClose();
         }
       }}
     >

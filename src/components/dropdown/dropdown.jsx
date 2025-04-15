@@ -7,10 +7,16 @@ const Dropdown = ({ options = [], selection, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -18,12 +24,6 @@ const Dropdown = ({ options = [], selection, onSelect }) => {
     if (itemValue !== selectedItem) {
       setSelectedItem(itemValue);
       onSelect && onSelect(itemValue);
-      setIsOpen(false);
-    }
-  };
-
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
   };
@@ -44,9 +44,9 @@ const Dropdown = ({ options = [], selection, onSelect }) => {
       {isOpen && (
         <ul className="dropdown-menu">
           {options.map((option) => (
-            <li 
-              key={option.id} 
-              onClick={() => handleSelect(option.value)} 
+            <li
+              key={option.id}
+              onClick={() => handleSelect(option.value)}
               className="dropdown-item"
             >
               {option.value}
