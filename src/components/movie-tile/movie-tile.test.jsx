@@ -6,7 +6,7 @@ import MovieTile from './movie-tile';
 
 describe('MovieTile Component', () => {
   const mockMovie = {
-    posterUrl: 'https://example.com/poster.jpg',
+    poster_path: 'https://example.com/poster.jpg',
     title: 'The Shawshank Redemption',
     year: '1994',
     genres: ['Drama', 'Crime'],
@@ -23,7 +23,7 @@ describe('MovieTile Component', () => {
     
     // Check poster image
     const image = screen.getByRole('img');
-    expect(image).toHaveAttribute('src', mockMovie.posterUrl);
+    expect(image).toHaveAttribute('src', mockMovie.poster_path);
     expect(image).toHaveClass('poster');
     
     // Check title and year

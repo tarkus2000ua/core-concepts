@@ -1,0 +1,104 @@
+.movie-list-page {
+  width: 1200px;
+  margin: auto;
+}
+
+.movie-list-page .top-section {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.movie-list-page .top-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/images/netflix_collage.png');
+  /* background-size: cover; */
+  background-size: calc(100% + 60px) auto; /* add 60px to width */
+  background-position: -30px -100px; /* shift left and up */
+  background-repeat: no-repeat;
+  background-position: center -100px;
+  opacity: 0.3; /* 30% opacity */
+  z-index: 0;
+}
+
+.movie-list-page .top-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black overlay */
+  z-index: 1;
+}
+
+.movie-list-page .top-section-content {
+  position: relative;
+  z-index: 2;
+  /* Optional styling */
+  /* padding: 1rem;
+    color: white; */
+}
+
+.movie-list-page .search-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+.movie-list-page .logo {
+  font-size: 20px;
+  color: #f65261;
+}
+
+.movie-list-page .add-movie-btn {
+    background: #606060;
+    color: #f65261;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 4px;
+}
+
+.movie-list-page .search {
+    margin-top: 30px;
+    padding: 0 120px;
+    text-align: left;
+}
+
+.movie-list-page .search label {
+    display: inline-block;
+    font-size: 40px;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.movie-list-page .movie-list {
+    width: 1200px;
+    background-color: #232323;
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+
+.movie-list-page .movie-list .toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.movie-list-page .movie-list .total {
+    text-align: left;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.movie-list-page .movie-list .tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 30px;
+    
+}

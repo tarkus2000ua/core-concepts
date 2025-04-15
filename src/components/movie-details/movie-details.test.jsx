@@ -5,7 +5,7 @@ import MovieDetails from './movie-details';
 describe('MovieDetails Component', () => {
   const mockMovie = {
     title: 'The Shawshank Redemption',
-    posterUrl: 'https://example.com/shawshank.jpg',
+    poster_path: 'https://example.com/shawshank.jpg',
     rating: 9.3,
     genres: ['Drama'],
     year: 1994,
@@ -35,7 +35,7 @@ describe('MovieDetails Component', () => {
     render(<MovieDetails movie={mockMovie} />);
     
     const imgElement = screen.getByAltText('poster');
-    expect(imgElement).toHaveAttribute('src', mockMovie.posterUrl);
+    expect(imgElement).toHaveAttribute('src', mockMovie.poster_path);
   });
 
 });
