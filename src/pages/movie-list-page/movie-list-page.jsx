@@ -107,7 +107,9 @@ const MovieListPage = () => {
             {!selectedMovie ? (
               <button className="add-movie-btn">+ ADD MOVIE</button>
             ) : (
-              <div onClick={() =>setSelectedMovie(null)} className='glass'>&#x2315;</div>
+              <div onClick={() => setSelectedMovie(null)} className="glass">
+                &#x2315;
+              </div>
             )}
           </div>
           {selectedMovie ? (
@@ -145,7 +147,7 @@ const MovieListPage = () => {
             onClick={() => setPage((p) => Math.max(p - 1, 1))}
             disabled={page === 1}
           >
-            Previous
+            &lt;&nbsp;Previous
           </button>
 
           <span>
@@ -156,8 +158,16 @@ const MovieListPage = () => {
             onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
             disabled={page === totalPages}
           >
-            Next
+            Next&nbsp;&gt;
           </button>
+        </div>
+      </div>
+      <div className="footer">
+        <div className="logo">
+          <span>
+            <b>netflix</b>
+          </span>
+          <span>roulette</span>
         </div>
       </div>
     </div>

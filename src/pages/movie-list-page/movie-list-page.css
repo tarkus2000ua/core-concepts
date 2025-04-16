@@ -114,3 +114,30 @@
     row-gap: 30px;
     
 }
+
+.movie-list-page  .pagination {
+  color: #ffffff;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.movie-list-page  .pagination button {
+  color: #ffffff;
+  background: none;
+  border: none;
+  font-family: Monserrat, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.movie-list-page  .pagination span {
+  margin: 0 20px;
+}
+
+.movie-list-page .footer {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #424242;
+}
