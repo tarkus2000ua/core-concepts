@@ -4,8 +4,8 @@ import SortControl from './sort-control';
 
 describe('SortControl Component', () => {
   const mockOptions = [
-    { id: 1, value: 'Release Date' },
-    { id: 2, value: 'Title' },
+    { id: 1, name: 'Release Date', value: 'release_date' },
+    { id: 2, name: 'Title', value: 'title' },
   ];
   const mockOnSelect = jest.fn();
 
@@ -21,7 +21,7 @@ describe('SortControl Component', () => {
   });
 
   test('renders with provided selection', () => {
-    render(<SortControl options={mockOptions} selection="Title" />);
+    render(<SortControl options={mockOptions} selection="title" />);
     
     expect(screen.getByText('Title')).toBeInTheDocument();
   });
@@ -41,7 +41,7 @@ describe('SortControl Component', () => {
     await userEvent.click(screen.getByRole('button'));
     await userEvent.click(screen.getByText('Title'));
     
-    expect(mockOnSelect).toHaveBeenCalledWith('Title');
+    expect(mockOnSelect).toHaveBeenCalledWith('title');
     expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
 
@@ -64,7 +64,7 @@ describe('SortControl Component', () => {
   });
 
   test('does not call onSelect when same option is selected', async () => {
-    render(<SortControl options={mockOptions} selection="Release Date" onSelect={mockOnSelect} />);
+    render(<SortControl options={mockOptions} selection="release_date" onSelect={mockOnSelect} />);
     
     // Open dropdown
     await userEvent.click(screen.getByRole('button'));

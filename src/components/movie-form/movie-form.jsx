@@ -66,7 +66,7 @@ const MovieForm = ({ movie = {}, onSubmit }) => {
             name="poster_path"
             type="url"
             placeholder="https://"
-            defaultValue={movie.posterUrl ?? ''}
+            defaultValue={movie.poster_path ?? ''}
           />
         </div>
         <div className="form-group">

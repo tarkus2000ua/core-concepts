@@ -17,7 +17,7 @@ PrefilledForm.args = {
   movie: {
     title: 'The Shawshank Redemption',
     releaseDate: '1994-09-23',
-    posterUrl: 'https://example.com/shawshank.jpg',
+    poster_path: 'https://example.com/shawshank.jpg',
     rating: 9.3,
     genres: ['Drama'],
     runtime: 142,
