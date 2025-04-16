@@ -6,12 +6,13 @@
 .movie-list-page .top-section {
   position: relative;
   width: 100%;
-  height: 400px;
+  min-height: 400px;
   overflow: hidden;
   margin-bottom: 10px;
+  background-color: #232323;
 }
 
-.movie-list-page .top-section::before {
+.movie-list-page .top-section.search-bar::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -25,7 +26,7 @@
   z-index: 0;
 }
 
-.movie-list-page .top-section::after {
+.movie-list-page .top-section.search-bar::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -62,10 +63,21 @@
     border-radius: 4px;
 }
 
+.movie-list-page .glass {
+    color: #f65261;
+    font-size: 30px;
+    cursor: pointer;
+}
+
 .movie-list-page .search {
     margin-top: 30px;
     padding: 0 120px;
     text-align: left;
+}
+
+.movie-list-page .movie-details-section {
+  padding: 30px 60px;
+  text-align: left;
 }
 
 .movie-list-page .search label {

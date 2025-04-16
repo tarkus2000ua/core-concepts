@@ -24,11 +24,13 @@ export const GENRES = [
 export const SORT_OPTIONS = [
     {
       id: 1,
-      value: 'REALEASE DATE',
+      name: 'RELEASE DATE',
+      value: 'release_date'
     },
     {
       id: 2,
-      value: 'TITLE',
+      name: 'TITLE',
+      value: 'title'
     },
   ];
 

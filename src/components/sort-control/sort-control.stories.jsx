@@ -25,22 +25,22 @@ const Template = (args) => <SortControl {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   options: [
-    { id: 1, value: 'Release Date' },
-    { id: 2, value: 'Title' }
+    { id: 1, name: 'Release Date', value: 'release_date' },
+    { id: 2, name: 'Title', value: 'title' },
   ]
 };
 
 export const WithInitialSelection = Template.bind({});
 WithInitialSelection.args = {
   ...Default.args,
-  selection: 'Title'
+  selection: 'title'
 };
 
 export const WithCustomOptions = Template.bind({});
 WithCustomOptions.args = {
   options: [
-    { id: 1, value: 'Popularity' },
-    { id: 2, value: 'Rating' },
-    { id: 3, value: 'Release Year' }
+    { id: 1, name: 'Popularity', value: 'popularity' },
+    { id: 2, name: 'Rating', value: 'rating' },
+    { id: 3, name: 'Release Year', value: 'release_year' }
   ]
 };
