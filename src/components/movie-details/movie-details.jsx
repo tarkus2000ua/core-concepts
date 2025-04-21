@@ -1,3 +1,4 @@
+import { getYear } from '../../utils/datetime.utils';
 import './movie-details.css';
 
 const MovieDetails = ({ movie }) => {
@@ -8,8 +9,6 @@ const MovieDetails = ({ movie }) => {
   };
 
   const { hours, minutes } = formatRuntime(movie.runtime);
-
-  const getYear = (releaseDate) => new Date(releaseDate).getFullYear();
 
   return (
     <div className="movie-details">

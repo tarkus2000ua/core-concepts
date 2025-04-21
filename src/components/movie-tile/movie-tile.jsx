@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './movie-tile.css';
+import { getYear } from '../../utils/datetime.utils';
 
 const MovieTile = ({ movie, onTileClick }) => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -14,8 +15,6 @@ const MovieTile = ({ movie, onTileClick }) => {
     console.log(action);
     setIsMenuOpened(false);
   };
-
-  const getYear = (releaseDate) => new Date(releaseDate).getFullYear();
 
   return (
     <div className="movie-tile" onClick={() => onTileClick(movie)}>

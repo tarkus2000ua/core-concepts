@@ -10,19 +10,88 @@ import MovieDetails from '../../components/movie-details/movie-details';
 
 const MOVIES_PER_PAGE = 6;
 
+const Logo = () => (
+  <div className="logo">
+    <span><b>netflix</b></span>
+    <span>roulette</span>
+  </div>
+);
+
+const SearchHeader = ({ hasSelectedMovie, onAddMovie, onCloseDetails }) => (
+  <div className="search-header">
+    <Logo />
+    {!hasSelectedMovie ? (
+      <button className="add-movie-btn">+ ADD MOVIE</button>
+    ) : (
+      <div onClick={onCloseDetails} className="glass">&#x2315;</div>
+    )}
+  </div>
+);
+
+const SearchSection = ({ searchQuery, onSearch }) => (
+  <div className="search">
+    <label>FIND YOUR MOVIE</label>
+    <SearchForm initialValue={searchQuery} onSearch={onSearch} />
+  </div>
+);
+
+const Toolbar = ({ onGenreSelect, onSortSelect }) => (
+  <div className="toolbar">
+    <OptionSelect options={GENRES} onSelect={onGenreSelect} />
+    <SortControl options={SORT_OPTIONS} onSelect={onSortSelect} />
+  </div>
+);
+
+const Pagination = ({ page, totalPages, onPageChange }) => (
+  <div className="pagination">
+    <button
+      onClick={() => onPageChange(page - 1)}
+      disabled={page === 1}
+    >
+      &lt;&nbsp;Previous
+    </button>
+    <span>Page {page} of {totalPages}</span>
+    <button
+      onClick={() => onPageChange(page + 1)}
+      disabled={page === totalPages}
+    >
+      Next&nbsp;&gt;
+    </button>
+  </div>
+);
+
+const buildMovieSearchParams = ({ page, searchQuery, genre, sortBy }) => {
+  const params = new URLSearchParams();
+  
+  if (sortBy) params.append('sortBy', sortBy);
+  params.append('sortOrder', 'asc');
+  
+  if (searchQuery) {
+    params.append('search', searchQuery);
+    params.append('searchBy', 'title');
+  }
+  
+  if (genre && genre !== 'ALL') params.append('filter', genre);
+  
+  params.append('offset', (page - 1) * MOVIES_PER_PAGE);
+  params.append('limit', MOVIES_PER_PAGE);
+  
+  return params;
+};
+
 const MovieListPage = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [genre, setGenre] = useState(null);
-  const [searchQuery, setSearchQueary] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState(SORT_OPTIONS[0].value || null);
-  const offset = (page - 1) * MOVIES_PER_PAGE;
   const controllerRef = useRef(null);
 
+  const totalPages = Math.ceil(total / MOVIES_PER_PAGE);
+
   useEffect(() => {
-    // Cancel previous request
     if (controllerRef.current) {
       controllerRef.current.abort();
     }
@@ -30,30 +99,14 @@ const MovieListPage = () => {
     const controller = new AbortController();
     controllerRef.current = controller;
 
-    const params = {
-      sortBy,
-      sortOrder: 'asc', //TODO: Modify Sort Control
-      search: searchQuery,
-      searchBy: searchQuery ? 'title' : null,
-      filter: genre === 'ALL' ? null : genre,
-      offset,
-      limit: MOVIES_PER_PAGE,
-    };
-
-    // Remove empty parameters
-    Object.keys(params).forEach((key) => {
-      if (
-        params[key] === '' ||
-        params[key] === null ||
-        params[key] === undefined
-      ) {
-        delete params[key];
-      }
-    });
+    const params = buildMovieSearchParams({ page, searchQuery, genre, sortBy });
 
     const fetchData = async () => {
       try {
+        // Convert URLSearchParams to object if needed by your API client
+        // const paramsObj = Object.fromEntries(params.entries());
         const res = await getMovieList(params, controller.signal);
+        
         setMovies(res.data.data);
         setTotal(res.data.totalAmount || 0);
       } catch (err) {
@@ -72,13 +125,11 @@ const MovieListPage = () => {
         controllerRef.current.abort();
       }
     };
-  }, [offset, searchQuery, genre, sortBy]);
-
-  const totalPages = Math.ceil(total / MOVIES_PER_PAGE);
+  }, [page, searchQuery, genre, sortBy]);
 
   const handleSearch = (query) => {
     if (query !== searchQuery) {
-      setSearchQueary(query);
+      setSearchQuery(query);
       setPage(1);
     }
   };
@@ -93,82 +144,64 @@ const MovieListPage = () => {
     setPage(1);
   };
 
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedMovie(null);
+  };
+
   return (
     <div className="movie-list-page">
       <div className={`top-section ${!selectedMovie ? 'search-bar' : ''}`}>
         <div className="top-section-content">
-          <div className="search-header">
-            <div className="logo">
-              <span>
-                <b>netflix</b>
-              </span>
-              <span>roulette</span>
-            </div>
-            {!selectedMovie ? (
-              <button className="add-movie-btn">+ ADD MOVIE</button>
-            ) : (
-              <div onClick={() => setSelectedMovie(null)} className="glass">
-                &#x2315;
-              </div>
-            )}
-          </div>
+          <SearchHeader 
+            hasSelectedMovie={!!selectedMovie} 
+            onCloseDetails={handleCloseDetails}
+          />
+          
           {selectedMovie ? (
             <div className="movie-details-section">
               <MovieDetails movie={selectedMovie} />
             </div>
           ) : (
-            <div className="search">
-              <label>FIND YOUR MOVIE</label>
-              <SearchForm initialValue={searchQuery} onSearch={handleSearch} />
-            </div>
+            <SearchSection searchQuery={searchQuery} onSearch={handleSearch} />
           )}
         </div>
       </div>
 
-      <div className="movie-list">
-        <div className="toolbar">
-          <OptionSelect options={GENRES} onSelect={handleGenreSelection} />
-          <SortControl options={SORT_OPTIONS} onSelect={handleSortBy} />
+      {!selectedMovie && (
+        <div className="movie-list">
+          <Toolbar 
+            onGenreSelect={handleGenreSelection} 
+            onSortSelect={handleSortBy} 
+          />
+          
+          <div className="total">
+            <b>{total}</b> movies found
+          </div>
+          
+          <div className="tiles">
+            {movies.map((movie) => (
+              <MovieTile
+                key={movie.id}
+                movie={movie}
+                onTileClick={() => setSelectedMovie(movie)}
+              />
+            ))}
+          </div>
+          
+          <Pagination 
+            page={page} 
+            totalPages={totalPages} 
+            onPageChange={handlePageChange} 
+          />
         </div>
-        <div className="total">
-          <b>{total}</b> movies found
-        </div>
-        <div className="tiles">
-          {movies.map((movie) => (
-            <MovieTile
-              key={movie.id}
-              movie={movie}
-              onTileClick={() => setSelectedMovie(movie)}
-            />
-          ))}
-        </div>
-        <div className="pagination">
-          <button
-            onClick={() => setPage((p) => Math.max(p - 1, 1))}
-            disabled={page === 1}
-          >
-            &lt;&nbsp;Previous
-          </button>
-
-          <span>
-            Page {page} of {totalPages}
-          </span>
-
-          <button
-            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-            disabled={page === totalPages}
-          >
-            Next&nbsp;&gt;
-          </button>
-        </div>
-      </div>
+      )}
+      
       <div className="footer">
-        <div className="logo">
-          <span>
-            <b>netflix</b>
-          </span>
-          <span>roulette</span>
-        </div>
+        <Logo />
       </div>
     </div>
   );

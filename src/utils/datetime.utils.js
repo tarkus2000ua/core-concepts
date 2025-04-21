@@ -1,0 +1,1 @@
+export const getYear = (releaseDate) => new Date(releaseDate).getFullYear();
