@@ -103,8 +103,6 @@ const MovieListPage = () => {
 
     const fetchData = async () => {
       try {
-        // Convert URLSearchParams to object if needed by your API client
-        // const paramsObj = Object.fromEntries(params.entries());
         const res = await getMovieList(params, controller.signal);
         
         setMovies(res.data.data);
