@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './sort-control.css';
 
-const SortControl = ({ options = [], selection, onSelect }) => {
+const SortControl = ({ options = [], selection, onSelect, ...props }) => {
   const [selectedItem, setSelectedItem] = useState(
     selection || options[0]?.value
   );
@@ -34,7 +34,7 @@ const SortControl = ({ options = [], selection, onSelect }) => {
   }
 
   return (
-    <div className="sort-control" ref={selectRef}>
+    <div className="sort-control" ref={selectRef} {...props}>
       <label>SORT BY</label>
       <button
         onClick={() => setIsOpen((prev) => !prev)}

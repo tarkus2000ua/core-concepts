@@ -1,7 +1,16 @@
+import { useLoaderData } from 'react-router-dom';
+import { getMovie } from '../../movies.api';
 import { getYear } from '../../utils/datetime.utils';
 import './movie-details.css';
 
-const MovieDetails = ({ movie }) => {
+export async function movieLoader({params}) {
+  const { movieid } = params;
+  const {data:movie} = await getMovie(movieid);
+  return { movie };
+}
+
+const MovieDetails = () => {
+  const { movie } = useLoaderData();
   const formatRuntime = (runtime) => {
     const hours = Math.trunc(runtime / 60);
     const minutes = runtime % 60;
@@ -11,7 +20,7 @@ const MovieDetails = ({ movie }) => {
   const { hours, minutes } = formatRuntime(movie.runtime);
 
   return (
-    <div className="movie-details">
+    <div className="movie-details movie-details-section">
       <img className="poster" src={movie.poster_path} alt='poster'/>
       <div className="movie-info">
         <div className="title-container">
