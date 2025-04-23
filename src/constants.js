@@ -24,11 +24,13 @@ export const GENRES = [
 export const SORT_OPTIONS = [
     {
       id: 1,
-      value: 'REALEASE DATE',
+      name: 'RELEASE DATE',
+      value: 'release_date'
     },
     {
       id: 2,
-      value: 'TITLE',
+      name: 'TITLE',
+      value: 'title'
     },
   ];
 
@@ -43,6 +45,6 @@ export const MOVIE = {
   actors: 'Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta',
   description:
     'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra',
-  posterUrl:
+  poster_path:
     'https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_SX300.jpg',
 };

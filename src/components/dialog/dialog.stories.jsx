@@ -30,7 +30,7 @@ EditMovieDialog.args = {
       movie={{
         title: 'Inception',
         releaseDate: '2010-07-16',
-        posterUrl: 'https://example.com/inception.jpg',
+        poster_path: 'https://example.com/inception.jpg',
         rating: 8.8,
         genres: ['Sci-Fi'],
         runtime: 148,

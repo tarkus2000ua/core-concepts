@@ -39,14 +39,14 @@ const SortControl = ({ options = [], selection, onSelect }) => {
       <button
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span>{selectedItem}</span>
+        <span>{options.find(item => item.value === selectedItem).name}</span>
         <span className={`caret ${isOpen ? "open" : ""}`}></span>
       </button>
       {isOpen && (
         <ul className="options-list">
           {options.map((option) => (
             <li key={option.id} onClick={() => handleSelect(option.value)} className="option-item">
-              {option.value}
+              {option.name}
             </li>
           ))}
         </ul>

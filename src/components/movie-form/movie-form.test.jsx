@@ -26,7 +26,7 @@ describe('MovieForm', () => {
   const mockMovie = {
     title: 'Test Movie',
     releaseDate: '2023-01-01',
-    posterUrl: 'https://example.com/poster.jpg',
+    poster_path: 'https://example.com/poster.jpg',
     rating: 8.5,
     genres: ['Action', 'Comedy'],
     runtime: 120,
@@ -58,7 +58,7 @@ describe('MovieForm', () => {
     expect(screen.getByPlaceholderText('Title')).toHaveValue(mockMovie.title);
     expect(screen.getByDisplayValue(mockMovie.releaseDate)).toBeInTheDocument();
     expect(screen.getByPlaceholderText('https://')).toHaveValue(
-      mockMovie.posterUrl
+      mockMovie.poster_path
     );
     expect(
       screen.getByDisplayValue(mockMovie.rating.toString())

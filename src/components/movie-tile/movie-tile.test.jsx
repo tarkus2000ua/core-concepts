@@ -6,9 +6,9 @@ import MovieTile from './movie-tile';
 
 describe('MovieTile Component', () => {
   const mockMovie = {
-    posterUrl: 'https://example.com/poster.jpg',
+    poster_path: 'https://example.com/poster.jpg',
     title: 'The Shawshank Redemption',
-    year: '1994',
+    release_date: '1993-09-14',
     genres: ['Drama', 'Crime'],
   };
 
@@ -23,12 +23,13 @@ describe('MovieTile Component', () => {
     
     // Check poster image
     const image = screen.getByRole('img');
-    expect(image).toHaveAttribute('src', mockMovie.posterUrl);
+    expect(image).toHaveAttribute('src', mockMovie.poster_path);
     expect(image).toHaveClass('poster');
     
     // Check title and year
     expect(screen.getByText(mockMovie.title)).toBeInTheDocument();
-    expect(screen.getByText(mockMovie.year)).toBeInTheDocument();
+    const expectedYear = new Date(mockMovie.release_date).getFullYear();
+    expect(screen.getByText(expectedYear.toString())).toBeInTheDocument();
     
     // Check genres
     const genresElement = screen.getByTitle(mockMovie.genres.join(', '));
