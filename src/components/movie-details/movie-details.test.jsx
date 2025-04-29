@@ -1,43 +1,83 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import MovieDetails from './movie-details';
 
+const mockMovie = {
+  title: 'The Shawshank Redemption',
+  poster_path: '/shawshank.jpg',
+  vote_average: 9.3,
+  genres: ['Drama'],
+  release_date: '1994-09-23',
+  runtime: 142,
+  overview: 'Two imprisoned men bond over a number of years...',
+};
+
+const renderWithRouter = () => {
+  const router = createMemoryRouter(
+    [
+      {
+        path: '/movies/:id',
+        element: <MovieDetails />,
+        loader: () => mockMovie,
+      },
+    ],
+    {
+      initialEntries: ['/movies/123'],
+      initialIndex: 0,
+    }
+  );
+
+  return render(<RouterProvider router={router} />);
+};
+
 describe('MovieDetails Component', () => {
-  const mockMovie = {
-    title: 'The Shawshank Redemption',
-    poster_path: 'https://example.com/shawshank.jpg',
-    vote_average: 9.3,
-    genres: ['Drama'],
-    release_date: '1993-09-14',
-    runtime: 142,
-    overview: 'Two imprisoned men bond over a number of years...',
-  };
+  test('renders all movie details correctly', () => {
+    renderWithRouter();
 
-  test('renders movie details correctly', () => {
-    render(<MovieDetails movie={mockMovie} />);
+    // Verify poster image
+    const imgElement = screen.getByAltText('poster');
+    expect(imgElement).toBeInTheDocument();
+    expect(imgElement).toHaveAttribute('src', mockMovie.poster_path);
 
-    // Check if all main elements are rendered
-    expect(screen.getByAltText('poster')).toBeInTheDocument();
+    // Verify text content
     expect(screen.getByText(mockMovie.title)).toBeInTheDocument();
-    expect(
-      screen.getByText(mockMovie.vote_average.toString())
-    ).toBeInTheDocument();
+    expect(screen.getByText(mockMovie.vote_average.toString())).toBeInTheDocument();
     expect(screen.getByText(mockMovie.genres.join(', '))).toBeInTheDocument();
+    
+    // Verify year extraction
     const expectedYear = new Date(mockMovie.release_date).getFullYear();
     expect(screen.getByText(expectedYear.toString())).toBeInTheDocument();
+    
+    // Verify overview
     expect(screen.getByText(mockMovie.overview)).toBeInTheDocument();
   });
 
-  test('displays correct runtime format', () => {
-    render(<MovieDetails movie={mockMovie} />);
-
+  test('displays correct runtime format (142 minutes → 2h 22min)', () => {
+    renderWithRouter();
     expect(screen.getByTestId('runtime')).toHaveTextContent('2h 22min');
   });
 
-  test('displays correct poster URL', () => {
-    render(<MovieDetails movie={mockMovie} />);
+  test('handles missing poster gracefully', () => {
+    const movieWithoutPoster = {
+      ...mockMovie,
+      poster_path: undefined
+    };
 
-    const imgElement = screen.getByAltText('poster');
-    expect(imgElement).toHaveAttribute('src', mockMovie.poster_path);
+    const router = createMemoryRouter(
+      [
+        {
+          path: '/movies/:id',
+          element: <MovieDetails />,
+          loader: () => movieWithoutPoster,
+        },
+      ],
+      {
+        initialEntries: ['/movies/123'],
+      }
+    );
+
+    render(<RouterProvider router={router} />);
+    expect(screen.getByAltText('poster')).toHaveAttribute('src', ''); 
   });
 });

@@ -1,13 +1,13 @@
-const { defineConfig } = require('cypress')
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   component: {
     devServer: {
-      framework: 'react',
-      bundler: 'webpack',
+      framework: "react",
+      bundler: "webpack",
       webpackConfig: {
         resolve: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx']
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
         module: {
           rules: [
@@ -15,22 +15,29 @@ module.exports = defineConfig({
               test: /\.(js|jsx|ts|tsx)$/,
               exclude: /node_modules/,
               use: {
-                loader: 'babel-loader',
+                loader: "babel-loader",
                 options: {
                   presets: [
-                    '@babel/preset-env',
-                    ['@babel/preset-react', { runtime: 'automatic' }]
-                  ]
-                }
-              }
+                    "@babel/preset-env",
+                    ["@babel/preset-react", { runtime: "automatic" }],
+                  ],
+                },
+              },
             },
             {
               test: /\.css$/,
-              use: ['null-loader']
-            }
-          ]
-        }
-      }
-    }
-  }
-})
+              use: ["null-loader"],
+            },
+          ],
+        },
+      },
+    },
+  },
+
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
+    baseUrl: 'http://localhost:3000',
+  },
+});

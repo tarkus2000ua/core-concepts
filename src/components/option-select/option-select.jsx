@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './option-select.css';
 
-const OptionSelect = ({ options = [], selection, onSelect }) => {
+const OptionSelect = ({ options = [], selection, onSelect, ...props }) => {
   const [selectedItem, setSelectedItem] = useState(selection || options[0]?.value);
 
   const handleOptionClick = (itemValue) => {
@@ -12,7 +12,7 @@ const OptionSelect = ({ options = [], selection, onSelect }) => {
   }
 
   return (
-    <div className="option-select">
+    <div className="option-select" {...props}>
       {options.map((item) => (
         <div
           className={`option ${item.value === selectedItem ? 'active' : ''}`}

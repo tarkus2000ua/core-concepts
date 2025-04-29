@@ -12,7 +12,7 @@ const SearchForm = ({ initialValue, onSearch }) => {
 
   return (
     <form className='search-form' onSubmit={handleFormSubmit}>
-      <input type="text" placeholder={SEARCH_PLACEHOLDER} value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
+      <input type="search" placeholder={SEARCH_PLACEHOLDER} value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
       <button type='submit'>Search</button>
     </form>
   );
