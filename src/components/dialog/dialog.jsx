@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import './dialog.css';
 
-const Dialog = ({ title, children, onClose }) => {
+const Dialog = ({ title, children, onClose, isOpen = true }) => {
   useEffect(() => {
+    if (!isOpen) return;
+    
     document.body.classList.add('body-scroll-lock');
     
     const handleKeyDown = (e) => {
@@ -18,7 +20,9 @@ const Dialog = ({ title, children, onClose }) => {
       document.body.classList.remove('body-scroll-lock');
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [onClose, isOpen]);
+
+  if (!isOpen) return null;
 
   return createPortal(
     <div 

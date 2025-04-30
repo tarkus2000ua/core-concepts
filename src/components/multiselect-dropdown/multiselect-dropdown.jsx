@@ -6,15 +6,15 @@ const MultiselectDropdown = ({ options = [], selection = [], onSelect }) => {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
   const handleSelect = (itemValue) => {
     const newSelection = selection.includes(itemValue)
-      ? selection.filter(item => item !== itemValue)
+      ? selection.filter((item) => item !== itemValue)
       : [...selection, itemValue];
     onSelect?.(newSelection);
   };
@@ -25,13 +25,13 @@ const MultiselectDropdown = ({ options = [], selection = [], onSelect }) => {
     }
   };
 
-  const displayText = selection.length > 0 
-    ? selection.join(', ') 
-    : 'Select Genre';
+  const displayText =
+    selection.length > 0 ? selection.join(', ') : 'Select Genre';
 
   return (
     <div className="dropdown" ref={dropdownRef}>
       <button
+        type="button"
         className={`dropdown-toggle ${isOpen ? 'open' : ''}`}
         onClick={() => setIsOpen((prev) => !prev)}
       >
@@ -41,9 +41,9 @@ const MultiselectDropdown = ({ options = [], selection = [], onSelect }) => {
       {isOpen && (
         <ul className="dropdown-menu">
           {options.map((option) => (
-            <li 
-              key={option.id} 
-              onClick={() => handleSelect(option.value)} 
+            <li
+              key={option.id}
+              onClick={() => handleSelect(option.value)}
               className="dropdown-item"
             >
               <input

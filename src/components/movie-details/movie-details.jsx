@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import { getMovie } from '../../movies.api';
 import { getYear } from '../../utils/datetime.utils';
 import './movie-details.css';
@@ -39,6 +39,7 @@ const MovieDetails = () => {
         </div>
         <div className="description">{movie.overview}</div>
       </div>
+      <Outlet />
     </div>
   );
 };

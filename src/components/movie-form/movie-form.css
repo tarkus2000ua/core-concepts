@@ -181,13 +181,38 @@
     width: 100%;
   }
   
-  /* Error Styling (recommended addition) */
-  .error-message {
-    color: #f65261;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  .error-input {
-    border: 1px solid #f65261 !important;
-  }
+/* Error Styling */
+.has-error label {
+  color: #ff4d4f;
+}
+
+.form-input.error,
+.form-textarea.error,
+.date-input-container.error .date-input,
+.multiselect-error {
+  border: 1px solid #ff4d4f;
+  /* background-color: #fff2f0; */
+}
+
+.error-message {
+  color: #ff4d4f;
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 0.25rem;
+  padding-left: 10px;
+  display: block;
+}
+
+/* Focus states for error fields */
+.form-input.error:focus,
+.form-textarea.error:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+}
+
+/* Transition effects */
+.form-input,
+.form-textarea,
+.date-input {
+  transition: all 0.2s ease;
+}
