@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import './movie-tile.css';
 import { getYear } from '../../utils/datetime.utils';
+import { useNavigate } from 'react-router-dom';
 
 const MovieTile = ({ movie, onTileClick }) => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleMenuClick = (e) => {
     e.stopPropagation();
@@ -12,7 +15,9 @@ const MovieTile = ({ movie, onTileClick }) => {
 
   const handleMenuAction = (action) => (e) => {
     e.stopPropagation();
-    console.log(action);
+    if(action='edit'){
+      navigate(`/${movie.id}/edit`)
+    }
     setIsMenuOpened(false);
   };
 
